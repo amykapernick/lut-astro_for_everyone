@@ -1,0 +1,22 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import BlogHeader from '../components/BlogHeader.astro'
+
+let title = 'My Astro Site'
+let description = 'A starter Astro blog site'
+let permalink = 'http://localhost:3000'
+---
+
+<html lang="en-AU">
+	<head>
+		<BaseHead title={title} description={description} permalink={permalink} />
+	</head>
+	<body>
+		<BlogHeader />
+		<div class="wrapper">
+		<main class="content">
+		<slot />
+		</main>
+		</div>
+	</body>
+</html>

@@ -1,8 +1,7 @@
 ---
 // Component Imports
-import BaseHead from '../components/BaseHead.astro';
-import BlogHeader from '../components/BlogHeader.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
+import MainLayout from '../layouts/DefaultLayout.astro'
 
 interface MarkdownFrontmatter {
 	publishDate: number;
@@ -14,22 +13,15 @@ interface MarkdownFrontmatter {
 // All variables are available to use in the HTML template below.
 let title = 'Example Blog';
 let description = 'The perfect starter for your perfect blog.';
-let permalink = 'https://example.com/';
 
 // Data Fetching: List all Markdown posts in the repo.
-
 let allPosts = await Astro.fetchContent('./posts/*.md');
 allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead {title} {description} {permalink} />
 
-		<style>
+		<!-- <style>
 			header {
 				width: 100%;
 				height: 100%;
@@ -62,21 +54,14 @@ allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(
 				font-size: 2.5rem;
 				font-weight: 700;
 			}
-		</style>
-	</head>
+		</style> -->
 
-	<body>
-		<BlogHeader />
-		<div class="wrapper">
-			<main class="content">
-				<section class="intro">
-					<h1 class="latest">{title}</h1>
-					<p>{description}</p>
-				</section>
-				<section aria-label="Blog post list">
-					{allPosts.map((p) => <BlogPostPreview post={p} />)}
-				</section>
-			</main>
-		</div>
-	</body>
-</html>
+<MainLayout>
+	<section class="intro">
+		<h1 class="latest">{title}</h1>
+		<p>{description}</p>
+	</section>
+	<section aria-label="Blog post list">
+		{allPosts.map((p) => <BlogPostPreview post={p} />)}
+	</section>
+</MainLayout>
