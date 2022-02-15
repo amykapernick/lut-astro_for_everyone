@@ -2,10 +2,16 @@
 import BaseHead from '../components/BaseHead.astro'
 import BlogHeader from '../components/BlogHeader.astro'
 
+import '../styles/blog.scss'
+
 let title = 'My Astro Site'
 let description = 'A starter Astro blog site'
 let permalink = 'http://localhost:3000'
+
 ---
+
+
+
 
 <html lang="en-AU">
 	<head>
@@ -21,15 +27,7 @@ let permalink = 'http://localhost:3000'
 	</body>
 </html>
 
-<style>
-	header {
-		width: 100%;
-		height: 100%;
-		background-color: var(--theme-bg-offset);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+<style lang="scss">
 
 	.content {
 		margin-top: 4rem;
