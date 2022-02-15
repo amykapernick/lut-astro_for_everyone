@@ -4,9 +4,10 @@ import BlogHeader from '../components/BlogHeader.astro'
 
 import '../styles/blog.scss'
 
-let title = 'My Astro Site'
-let description = 'A starter Astro blog site'
-let permalink = 'http://localhost:3000'
+const {content} = Astro.props
+const {title, description, permalink} = content
+
+console.log(Astro.props)
 
 ---
 
