@@ -10,4 +10,21 @@
 export default /** @type {import('astro').AstroUserConfig} */ ({
 	// Enable the Preact renderer to support Preact JSX components.
 	renderers: ['@astrojs/renderer-preact'],
+	markdownOptions: {
+		remarkPlugins: [
+				[
+					'remark-autolink-headings', 
+						{
+							content: {
+								type: 'element',
+								tagName: 'span',
+								children: [{
+									type: 'text',
+									value: '🔗'
+								}]
+							}
+						}
+				]
+		]
+	}
 });
